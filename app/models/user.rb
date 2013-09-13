@@ -2,7 +2,7 @@
 
 class User < ActiveRecord::Base
   has_secure_password
-  attr_accessible :fname, :lname, :password, :username, :password_confirmation, :group_ids
+  attr_accessible :fname, :lname, :password, :username, :password_confirmation, :group_ids, :mail, :utype
 
   has_and_belongs_to_many :groups #, :inverse_of => :users
   has_many :cantakes
@@ -10,15 +10,18 @@ class User < ActiveRecord::Base
   has_many :exams #, :inverse_of => :user
 
   validates :username,	:presence => true,
-  						:uniqueness => true,
-  						:length => { :is => 9 }
+  						:uniqueness => true
+  						#:length => { :is => 9 }#
+  validates_uniqueness_of :username, :message => "El usuario no es unico"
+
   validates :fname,	:presence => true
   validates :lname,	:presence => true
   validates :utype,	:presence => true,
           					:numericality => { 	:only_integer => true,
           										:less_than => 3,
           										:greater_than_or_equal_to => 0 }
-  #validates :salt,	:presence => true
+  validates :mail,  :presence => true,
+		  			:uniqueness => true
   VALID_PASSWORD_REGEX = /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$/
   validates_presence_of :password,	:on => :create
   #validates_confirmation_of :password, message: "debería coincidir con el password", presence: true
@@ -32,6 +35,7 @@ class User < ActiveRecord::Base
 
   def normalizeAttributes
     self.username = self.username.downcase
+	self.mail = self.mail.downcase
 
     f = ""
     for t in self.fname.split(' ')
