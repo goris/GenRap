@@ -51,6 +51,7 @@ class ExamDefinitionController < ApplicationController
     #por lo tanto los queries los voy a hacer aquí
     hash = params[:hash]
     exam_name = params[:exam_name]
+    duracion_name = params[:duracion_name]
     number_of_attempts = params[:number_of_attempts]
     creationYear = params[:creationYear].to_i
     creationMonth = params[:creationMonth].to_i
@@ -74,6 +75,7 @@ class ExamDefinitionController < ApplicationController
     master_exam = MasterExam.create(
       attempts: number_of_attempts,
       name: exam_name,
+      duracion: duracion_name,
       dateCreation: Time.strptime("#{creationYear}-#{creationMonth}-#{creationDay} #{creationHour}:#{creationMinute}", '%Y-%m-%d %H:%M').in_time_zone(timeZone),
       startDate: Time.strptime("#{startYear}-#{startMonth}-#{startDay} #{startHour}:#{startMinute}", '%Y-%m-%d %H:%M').in_time_zone(timeZone),
       finishDate: Time.strptime("#{endYear}-#{endMonth}-#{endDay} #{endHour}:#{endMinute}", '%Y-%m-%d %H:%M').in_time_zone(timeZone),

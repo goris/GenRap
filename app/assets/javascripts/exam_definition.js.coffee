@@ -153,6 +153,7 @@ $(document).ready ->
           $.getJSON "/exam_definition/exam_def",
             hash: dataToSend
             exam_name: $("#name_exam").val()
+            duracion_name: $("#duracion_exam").val()
             number_of_attempts: $("#attempts_number").val()
             creationYear: cdt.getFullYear()
             creationMonth: cdt.getMonth() + 1
@@ -251,6 +252,7 @@ $(document).ready ->
           $.getJSON "/exam_definition/exam_def",
             hash: dataToSend
             exam_name: $("#name_exam").val()
+            duracion_name: $("#duracion_exam").val()
             number_of_attempts: $("#attempts_number").val()
             creationYear: cdt.getFullYear()
             creationMonth: cdt.getMonth() + 1

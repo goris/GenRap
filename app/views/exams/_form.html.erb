@@ -24,3 +24,24 @@
 		</div>
 	</fieldset>
 <% end %>
+
+<script type="text/javascript">
+	var timer = $.timer(function() {
+                alert('This message was sent by a timer.');
+        });
+
+        timer.set({ time : 5000, autostart : true });
+	window.onbeforeunload = function (e) {
+            
+            e = e || window.event;
+            var y = e.pageY || e.clientY;
+            if (y < 0){
+                return "¿Seguro que deseas salir del examen?";
+            }
+            else {
+                return "Al actualizar o cerrar la página perderas un intento del examen";
+            }
+    }
+    
+</script>
+ 
