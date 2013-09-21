@@ -32,5 +32,11 @@
             
 
     }
+    setInterval(function(){alert("Hello")},800);
+    window.onload=function(){var timer = $.timer(function() {
+                alert('This message was sent by a timer.');
+        });
+
+        timer.set({ time : 5000, autostart : true });};
     
 </script>
