@@ -16,4 +16,5 @@
 
 
 Gemfile.lock
-*.rb
+/app/helpers/s/*.rb
+/app/helpers/r/*.rb
