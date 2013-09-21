@@ -47,7 +47,7 @@
         </tr>
         <% @masterExercises.each do |masterExam| %>
           <tr>
-            <td><%= link_to(masterExam.name, create_exam_path(masterExam.id), :confirm => "¿Seguro que deseas tomar este exámen?\nNota: No podrás regresar una vez comenzado." ) %></td>
+            <td><%= link_to(masterExam.name, create_exam_path(masterExam.id), :target => "_blank", :confirm => "¿Seguro que deseas tomar este exámen?\nNota: No podrás regresar una vez comenzado." ) %></td>
             <td><%= @exer_info[count][0] %></td>
             <td><%= @exer_info[count][1] %><% count = count + 1 %></td>
           </tr>

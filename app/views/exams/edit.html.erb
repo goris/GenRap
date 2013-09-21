@@ -11,3 +11,20 @@
 		</ul>
 	<% end %>
 </div>
+
+<script type="text/javascript">
+	
+	window.onbeforeunload = function (e) {
+            
+            e = e || window.event;
+            var y = e.pageY || e.clientY;
+            if (y < 0){
+                return "¿Seguro que deseas salir del examen?";
+            }
+            else {
+                return "Al actualizar o cerrar la página perderas un intento del examen";
+            }
+
+    }
+    
+</script>
