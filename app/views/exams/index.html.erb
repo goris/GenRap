@@ -3,7 +3,8 @@
     
     <%= table_for @masterExams, html: {id: 'exams', class: 'summary table table-striped table-bordered table-condensed'} do -%>
       <% column title: 'Nombre' do |masterExam| %>
-        <% link_to(masterExam.name, create_exam_path(masterExam.id), confirm: "Are you sure?") %>
+        <% #link_to(masterExam.name, create_exam_path(masterExam.id), confirm: "Are you sure?") %>
+        <% link_to(masterExam.name, create_exam_path(masterExam.id)) %>
       <% end %>
       <% column :attempts, title: 'Intentos máximos' %>
       <% column :startDate, title: 'Inicio' %>

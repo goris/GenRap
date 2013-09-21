@@ -10,8 +10,7 @@ class User < ActiveRecord::Base
   has_many :exams #, :inverse_of => :user
 
   validates :username,	:presence => true,
-  						:uniqueness => true,
-  						:length => { :is => 9 }
+  						:uniqueness => true
   validates :fname,	:presence => true
   validates :lname,	:presence => true
   validates :utype,	:presence => true,
