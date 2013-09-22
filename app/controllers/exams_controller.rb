@@ -112,8 +112,12 @@ class ExamsController < ApplicationController
 			# Declarar el examen como comenzado
 			@exam = Exam.find(params[:id])
 			#master_examen es un objeto
+<<<<<<< HEAD
 			@examenMaestro = @exam.master_exam;
 
+=======
+			@examenMaestro = @exam.master_exam
+>>>>>>> 248e3cf2dc5e8c54ab4af5518550aa380a964e88
 			# Se guarda el examen para cambiarse a comenzado
 			if !@exam.save
 				flash[:error] = "Error al obtener el examen."
@@ -143,34 +147,39 @@ class ExamsController < ApplicationController
 
 			# Checar que la fecha del examen sea valida
 			if masterExam.startDate <= Time.now && masterExam.finishDate >= Time.now
-				score = 0
-				masterExamId = masterExam.id
+				examenTomado = @exam
+				#checara que la hora en la que se guarda el servidor esta dentro del tiempo de duración y 30 segundos del alert que muestra
+				horaMaxima = examenTomado.date + (masterExam.duracion*60) + 30
+				if Time.now <= horaMaxima
+					score = 0
+					masterExamId = masterExam.id
 
-				# Para cada pregunta, se verifica la respuesta
-				@exam.questions.each do |question|
+					# Para cada pregunta, se verifica la respuesta
+					@exam.questions.each do |question|
 
-					masterQuestionId = question.master_question_id
-					questionId = params[":questions"][question.id.to_s]
-					givenAns = questionId["givenAns"]
-					question.update_attributes(givenAns: givenAns)
+						masterQuestionId = question.master_question_id
+						questionId = params[":questions"][question.id.to_s]
+						givenAns = questionId["givenAns"]
+						question.update_attributes(givenAns: givenAns)
 
-					# Si la respuesta dada es correcta, se agrega la cantidad al score
-					if givenAns == question.correctAns
-						questionNum = question.questionNum
-						examDef = ExamDefinition.where("master_exam_id = ? and master_question_id = ? and questionNum = ?", masterExamId, masterQuestionId, questionNum).first
-						weight = examDef.weight
-						score = score + weight*100
+						# Si la respuesta dada es correcta, se agrega la cantidad al score
+						if givenAns == question.correctAns
+							questionNum = question.questionNum
+							examDef = ExamDefinition.where("master_exam_id = ? and master_question_id = ? and questionNum = ?", masterExamId, masterQuestionId, questionNum).first
+							weight = examDef.weight
+							score = score + weight*100
+						end
 					end
-				end
 
-				# Se actualiza el score del examen
-			    if @exam.update_attributes(score: score)
-					flash[:notice] = 'El exámen fue registrado de manera correcta.'
-			    else
-			    	flash[:error] = "Error al guardar el exámen."
-			    	redirect_to(root_path)
+					# Se actualiza el score del examen
+				    if @exam.update_attributes(score: score)
+						flash[:notice] = 'El exámen fue registrado de manera correcta.'
+				    else
+				    	flash[:error] = "Error al guardar el exámen."
+				    	redirect_to(root_path)
+				    end
+			    	redirect_to :action => "results", :id => @exam.id
 			    end
-		    	redirect_to :action => "results", :id => @exam.id
 		    else
 		    	flash[:error] = "Examen no disponible."
 		    	redirect_to(root_path)
