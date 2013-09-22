@@ -111,6 +111,8 @@ class ExamsController < ApplicationController
 		if check_prof || (@current_user.id.to_i == Exam.find(params[:id]).user_id.to_i && Exam.find(params[:id]).state.to_i == 0)
 			# Declarar el examen como comenzado
 			@exam = Exam.find(params[:id])
+			#master_examen es un objeto
+			@examenMaestro = @exam.master_exam;
 			# Se guarda el examen para cambiarse a comenzado
 			if !@exam.save
 				flash[:error] = "Error al obtener el examen."
