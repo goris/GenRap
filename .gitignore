@@ -20,3 +20,5 @@ Gemfile.lock
 /app/helpers/r/*.rb
 
 .DS_Store
+
+debug.txt
