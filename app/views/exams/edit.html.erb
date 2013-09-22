@@ -1,5 +1,5 @@
 <div class="hero-unit">
-	<h3 style="text-align: center;">Exámen</h3>
+	<h3 id="examen" style="text-align: center;">Exámen</h3>
 
 	<%= render 'form' %>
 
@@ -12,7 +12,17 @@
 	<% end %>
 </div>
 
+
 <script type="text/javascript">
+ var count = 110;
+		var timer = $.timer(
+			function() {
+				count--;
+				$('#examen').html(count);
+			},
+			1000,
+			true
+		);	
 	//Para que no mande alert al dar clic en boton de Enviar
 	$(".edit_exam").on("submit", function(e) {
 		window.onbeforeunload = null;	//se cancela la funcion onbeforeunload
@@ -32,11 +42,9 @@
             
 
     }
-    setInterval(function(){alert("Hello")},800);
-    window.onload=function(){var timer = $.timer(function() {
-                alert('This message was sent by a timer.');
-        });
 
-        timer.set({ time : 5000, autostart : true });};
+   
+    //setInterval(function(){alert("Hello")},800);
+   
     
 </script>
