@@ -1,6 +1,9 @@
 <div class="hero-unit">
 	<h3 style="text-align: center;">Exámen</h3>
-
+    <div style="background:yellow;"><h4> Duración del examen: <%= 
+    #TOMA EL VALOR DE DURACION DE LA TABLA DE MASTER_EXAM
+     @examenMaestro.duracion 
+    %> minutos</h4></div>
 	<%= render 'form' %>
 
 	<% if @exam.errors.any? %>
@@ -10,6 +13,8 @@
 			<% end %>
 		</ul>
 	<% end %>
+
+
 </div>
 
 <script type="text/javascript">
@@ -32,11 +37,14 @@
             
 
     }
+
+    /*
     setInterval(function(){alert("Hello")},800);
     window.onload=function(){var timer = $.timer(function() {
                 alert('This message was sent by a timer.');
         });
 
         timer.set({ time : 5000, autostart : true });};
+    */
     
 </script>
