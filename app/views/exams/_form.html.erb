@@ -13,6 +13,7 @@
 
 			<%= simple_fields_for ":questions[]", question do |question_field| %>
 				<% answers = format_answers(question.answers) %>
+				<% answers = random_answers(answers) %>
 				<%= question_field.select :givenAns, answers.map{ |ansNum| [ansNum.split(": ").second, ansNum.split(": ").first] } %>
 			<% end %>
 		<% end %>
