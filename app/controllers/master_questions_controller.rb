@@ -184,7 +184,7 @@ class MasterQuestionsController < ApplicationController
               "  #Inserte su codigo para llenar generar answers aqui\n" +
               "  #answers[1] = 2\n  #answers[2] = 3\n" +
               "  #Inserte su codigo para indicar la respuesta correcta\n" +
-              "  #correct = 1\n  [answers, correct]\nend"
+              "  #correct = 1\n  #answers = check_correct_anwers(answers, correct)\n [answers, correct]\nend"
     when 'inquiry'
       text << "¿Cuánto es ^1 + ^2?"
     end

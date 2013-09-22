@@ -29,4 +29,22 @@ module ExamsHelper
  		#Se regresa el arreglo temporal con los valores en las nuevas posiciones
  		return answersTemp
 	end
+
+	def check_correct_anwers(answers, correct)
+		correctAnswer = answers[correct].to_s
+		count = answers.length
+		i = 0
+		i.to_i
+		while i < count 
+	    	if i != correct
+	    		if answers[i].to_s == correctAnswer
+	    			if answers[i].to_s.match(/\A[+-]?\d+?(\.\d+)?\Z/) != nil
+	    				answers[i] = answers[i] + Random.rand(1..10)
+	    			end
+	    		end
+	    	end
+			i = i + 1
+		end
+		return answers
+	end
 end
