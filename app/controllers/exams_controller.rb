@@ -112,12 +112,7 @@ class ExamsController < ApplicationController
 			# Declarar el examen como comenzado
 			@exam = Exam.find(params[:id])
 			#master_examen es un objeto
-<<<<<<< HEAD
-			@examenMaestro = @exam.master_exam;
-
-=======
 			@examenMaestro = @exam.master_exam
->>>>>>> 248e3cf2dc5e8c54ab4af5518550aa380a964e88
 			# Se guarda el examen para cambiarse a comenzado
 			if !@exam.save
 				flash[:error] = "Error al obtener el examen."
