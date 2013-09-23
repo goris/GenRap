@@ -35,14 +35,17 @@ class GroupsController < ApplicationController
 			else
 			  logger.error "Bad group_file: #{group_file.class.name}: #{group_file.inspect}"
 			end
-			users = to_add.split(',')
+			users = to_add.split(/(\r?\n|,)/)
 			users.each do |user|
-				puts user
+				user = user.gsub(/\s+|\n+|\r+/, "")
+				if (user == "") 
+					next
+				end
 				curr_user = User.find_by_username(user)
 				if(curr_user == nil)
-					flash[:error] = "Usuario <b>" + user + "</b> no encontrado."
+					flash[:error] = ("Usuario <b>" + user + "</b> no encontrado.").html_safe
 				else
-					@group.users << curr_user
+					params[:group][:user_ids] << curr_user.id
 				end
 			end
 			
@@ -90,12 +93,15 @@ class GroupsController < ApplicationController
 			else
 			  logger.error "Bad group_file: #{group_file.class.name}: #{group_file.inspect}"
 			end
-			users = to_add.split(',')
+			users = to_add.split(/(\r?\n|,)/)
 			users.each do |user|
-				puts user
+				user = user.gsub(/\s+|\n+|\r+/, "")
+				if (user == "") 
+					next
+				end
 				curr_user = User.find_by_username(user)
 				if(curr_user == nil)
-					flash[:error] = "Usuario <b>" + user + "</b> no encontrado."
+					flash[:error] = ("Usuario <b>" + user + "</b> no encontrado.").html_safe
 				else
 					params[:group][:user_ids] << curr_user.id
 				end
