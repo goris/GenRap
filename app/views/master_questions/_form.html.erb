@@ -1,9 +1,9 @@
 <%= simple_form_for(@master_question) do |f| %>
 	<fieldset>
 		<div class = "inline-div">
-    	<%= label_tag(:language, "Lenguaje:") %>
-    	<%= f.select(:language, ['Python', 'SciLab']) %>
-  	</div>
+			<%= label_tag(:language, "Lenguaje:") %>
+			<%= f.collection_select :id, Language.all, :id, :name %>
+  		</div>
   	
     <div class = "inline-div">
   		<%= label_tag(:concept, "Concepto:") %>
