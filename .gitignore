@@ -16,4 +16,9 @@
 
 
 Gemfile.lock
-*.rb
+/app/helpers/s/*.rb
+/app/helpers/r/*.rb
+
+.DS_Store
+
+debug.txt

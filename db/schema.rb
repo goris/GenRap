@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20130923001955) do
+=======
+ActiveRecord::Schema.define(:version => 20130921175020) do
+>>>>>>> 4215ad88fc135059a726234466e929f7a388e74d
 
   create_table "cantakes", :id => false, :force => true do |t|
     t.integer "master_exam_id"
@@ -75,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20130923001955) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.string   "name"
+    t.integer  "duracion"
   end
 
   add_index "master_exams", ["user_id"], :name => "index_master_exams_on_user_id"

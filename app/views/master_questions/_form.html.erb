@@ -1,13 +1,19 @@
 <%= simple_form_for(@master_question) do |f| %>
 	<fieldset>
 		<div class = "inline-div">
+<<<<<<< HEAD
 			<%= label_tag(:language, "Lenguaje:") %>
 			<%= f.collection_select :id, Language.all, :id, :name %>
   		</div>
+=======
+    	<%= label_tag(:language, "Lenguaje:") %>
+    	<%= f.select(:language, ['C++', 'Python', 'SciLab']) %>
+  	</div>
+>>>>>>> 4215ad88fc135059a726234466e929f7a388e74d
   	
     <div class = "inline-div">
   		<%= label_tag(:concept, "Concepto:") %>
-    	<%= f.select(:concept, ['Ciclos', 'Expresiones']) %>
+    	<%= f.select(:concept, ['Calculos Básicos','Funciones predeterminadas','Funciones Definidas','Decisiones sinples','Decisiones complejas','Decisiones Anidades','Ciclos Fijos','Ciclios Variables','Ciclos Anidados', 'Expresiones']) %>
   	</div>
   	
     <div class ="inline-div">

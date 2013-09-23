@@ -37,8 +37,13 @@ group :production do
 end
 
 # To use ActiveModel has_secure_password
+<<<<<<< HEAD
 #gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'bcrypt-ruby'
+=======
+gem 'bcrypt-ruby'
+
+>>>>>>> 4215ad88fc135059a726234466e929f7a388e74d
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 

@@ -11,9 +11,12 @@ class User < ActiveRecord::Base
 
   validates :username,	:presence => true,
   						:uniqueness => true
+<<<<<<< HEAD
   						#:length => { :is => 9 }#
   validates_uniqueness_of :username, :message => "El usuario no es unico"
 
+=======
+>>>>>>> 4215ad88fc135059a726234466e929f7a388e74d
   validates :fname,	:presence => true
   validates :lname,	:presence => true
   validates :utype,	:presence => true,

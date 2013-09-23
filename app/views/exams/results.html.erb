@@ -16,11 +16,21 @@
       </tbody>
     </table>
 
-    <% if check_admin %>
-      <%= link_to "Continuar", exams_path, class: "btn" %>
-    <% else %>
+ <!--
+    <% #if check_admin 
+    %>
+      <%= #link_to "Continuar", exams_path, class: "btn" 
+      %>
+    <% #else 
+    %>
+      <%= #link_to "Continuar", pending_path, class: "btn" 
+      %>
+    <% #end 
+    %>
+  -->
+ 
       <%= link_to "Continuar", pending_path, class: "btn" %>
-    <% end %>
+    
 
   <% else %>
     
