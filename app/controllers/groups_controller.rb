@@ -25,6 +25,26 @@ class GroupsController < ApplicationController
 			if !@group.users.include? @current_user
 				@group.users << @current_user
 			end
+
+			group_file = params[:upload]
+			to_add = '';
+			if group_file.respond_to?(:read)
+			  to_add = group_file.read
+			elsif group_file.respond_to?(:path)
+			  to_add = File.read(group_file.path)
+			else
+			  logger.error "Bad group_file: #{group_file.class.name}: #{group_file.inspect}"
+			end
+			users = to_add.split(',')
+			users.each do |user|
+				puts user
+				curr_user = User.find_by_username(user)
+				if(curr_user == nil)
+					flash[:error] = "Usuario <b>" + user + "</b> no encontrado."
+				else
+					@group.users << curr_user
+				end
+			end
 			
 			if @group.save
 				flash[:notice] = "Grupo creado de manera exitosa."
@@ -61,6 +81,26 @@ class GroupsController < ApplicationController
 		if check_prof
 			@group = Group.find(params[:id])
 		 
+			group_file = params[:upload]
+			to_add = '';
+			if group_file.respond_to?(:read)
+			  to_add = group_file.read
+			elsif group_file.respond_to?(:path)
+			  to_add = File.read(group_file.path)
+			else
+			  logger.error "Bad group_file: #{group_file.class.name}: #{group_file.inspect}"
+			end
+			users = to_add.split(',')
+			users.each do |user|
+				puts user
+				curr_user = User.find_by_username(user)
+				if(curr_user == nil)
+					flash[:error] = "Usuario <b>" + user + "</b> no encontrado."
+				else
+					params[:group][:user_ids] << curr_user.id
+				end
+			end
+
 			if @group.update_attributes(params[:group])
 				flash[:notice] = 'El grupo fue actualizado de manera correcta.'
 		    else
