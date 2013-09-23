@@ -144,7 +144,7 @@ class MasterQuestionsController < ApplicationController
       master_temporal.randomizer = $randomizer
       master_temporal.solver = $solver
 
-      if @master_question.update_attributes(:language => master_temporal.language, :concept => master_temporal.concept, :subconcept => master_temporal.subconcept,
+      if @master_question.update_attributes(:concept => master_temporal.concept, :subconcept => master_temporal.subconcept,
                                          :inquiry => master_temporal.inquiry, :randomizer => master_temporal.randomizer, :solver => master_temporal.solver)
         flash[:notice] = 'La pregunta maestra fue actualizada de manera correcta.'
       else
@@ -215,7 +215,7 @@ class MasterQuestionsController < ApplicationController
   end
 
   def concepts_for_question
-    concepts = MasterQuestion.select("DISTINCT(concept), id").group("upper(concept)").where("upper(language) = upper('#{params[:language]}')")
+    concepts = MasterQuestion.select("DISTINCT(concept), id")
     respond_to do |format|
       format.json { render json: concepts.to_json }
     end

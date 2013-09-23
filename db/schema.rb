@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130828174432) do
+ActiveRecord::Schema.define(:version => 20130923001955) do
 
   create_table "cantakes", :id => false, :force => true do |t|
     t.integer "master_exam_id"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20130828174432) do
     t.float    "weight"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.integer  "language_id"
   end
 
   add_index "exam_definitions", ["master_exam_id"], :name => "index_exam_definitions_on_master_exam_id"
@@ -39,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20130828174432) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.integer  "attemptnumber"
+    t.integer  "language_id"
   end
 
   add_index "exams", ["master_exam_id"], :name => "index_exams_on_master_exam_id"
@@ -56,6 +58,12 @@ ActiveRecord::Schema.define(:version => 20130828174432) do
   create_table "groups_users", :id => false, :force => true do |t|
     t.integer "group_id"
     t.integer "user_id"
+  end
+
+  create_table "languages", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "master_exams", :force => true do |t|

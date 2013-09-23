@@ -11,7 +11,7 @@ class MasterQuestion < ActiveRecord::Base
   validates :solver,	:presence => true
   validates :subconcept, :presence => true
 
-  attr_accessible :concept, :inquiry, :language, :randomizer, :solver, :subconcept
+  attr_accessible :concept, :inquiry, :randomizer, :solver, :subconcept
 
   before_save :capitalizeAttributes
 
@@ -20,7 +20,6 @@ class MasterQuestion < ActiveRecord::Base
   end
 
   def capitalizeAttributes
-    self.language = self.language.capitalize
     self.concept = self.concept.capitalize
     self.subconcept = self.subconcept.capitalize
   end

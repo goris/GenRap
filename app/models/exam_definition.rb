@@ -2,6 +2,7 @@
 class ExamDefinition < ActiveRecord::Base
   belongs_to :master_exam
   belongs_to :master_question
+  has_one :language
 
   validates :master_exam,		:presence => true
   validates :master_question,	:presence => true
@@ -12,5 +13,5 @@ class ExamDefinition < ActiveRecord::Base
   							:numericality => {  :greater_than_or_equal_to => 0.0,
   												:less_than_or_equal_to => 1.0 }
 
-  attr_accessible :questionNum, :weight, :master_exam, :master_question
+  attr_accessible :questionNum, :weight, :master_exam, :master_question, :language_id
 end

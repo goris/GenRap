@@ -5,6 +5,10 @@
 	<%= label_tag "tag000", "Nombre del Examen:" %>
 	<%= text_field "name", "exam", "size" => 5, placeholder:"Nombre" %>
 
+	<br />
+	<%= f.collection_select :id, Language.all, :id, :name %>
+	<br/>
+
 	<%= label_tag "tag0000", "Número de Intentos:" %>
 	<!-- <%= text_field "attempts", "number", "size" => 5, placeholder:"Número" %> -->
 	<select id="attempts_number" style="width: 80px">
@@ -21,26 +25,18 @@
 	</select>
 
 
-
-
-
-
 	<h3>Preguntas</h3>
 
 	<table>
 		<tr>
 			<td>
 
-				<select id="language">
-					<option>Selecciona un Lenguaje</option>
-				</select>
-				<br/>
 				<select id="concept">
-					<option>Selecciona un Concepto</option>
+					<option>Selecciona un tema</option>
 				</select>
 				<br/>
 				<select id="subconcept">
-					<option>Selecciona un Subconcepto</option>
+					<option>Selecciona un concepto</option>
 				</select>
 
 			</td>
